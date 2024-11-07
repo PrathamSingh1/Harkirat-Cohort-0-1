@@ -49,3 +49,23 @@ What are common async functions?
         setTimeout
 fs.readFile - to read a file from your filesystem
 Fetch - to fetch some data from an API endpoint
+
+
+
+
+
+
+
+
+What even is a promise?
+It is just a class that makes callbacks and async functions slightly more readable.
+Whenever u create it, you need to pass in a function as the first argument which has resolve as the First argument
+
+
+
+
+
+
+Aynsc await syntax
+
+(Again, just syntactic sugar, Still uses callbacks/Promises under the hood)
