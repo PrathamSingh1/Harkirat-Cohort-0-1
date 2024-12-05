@@ -6,4 +6,13 @@ app.get('/', (req, res) => {
     res.send('Hello World');
 })
 
-app.listen(port)
+// app.post('/conversations', (req, res) => {
+//     console.log(req.headers)
+//     res.send({
+//         msg: "2 + 2 = 4"
+//     })
+// })
+
+app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`);
+})
