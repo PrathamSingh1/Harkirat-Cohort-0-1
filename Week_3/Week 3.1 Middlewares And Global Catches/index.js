@@ -32,7 +32,7 @@ app.listen(3000);
 
 // other way of doing it by middleware (optimize)
 
-const app = express();
+// const app = express();
 function userMiddleware(req, res, next) {
     if (username != "harkirat" && password != "pass") {
         res.status(403).json({
