@@ -4,7 +4,7 @@ function getAnimalData() {
             response.json()
                 .then(function(finalData) {
                     console.log(finalData)
-                })
+                })  
         })
     
 }

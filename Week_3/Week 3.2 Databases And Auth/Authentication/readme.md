@@ -23,3 +23,26 @@ Signature can be verified only using the password
 1 - Authentication tokens
 2 - User language preference
 3 - User theme preference
+
+
+
+
+
+                                Authentication
+                        
+                        Lets start by creating out assignment for today
+                                A website which has 2 endpoints-
+                
+        POST /signin                                                       GET /users
+        Body-{                                                               Headers-
+                username: string                                          Authorization header
+                password: string
+        }
+
+                                                       Returns an array of all users if user is signed in (token is correct)
+                                                        Returns 403 status code if not
+
+Returns a json web token with username encrypted
+
+                
+                
