@@ -1,3 +1,19 @@
+// debouncing, throtlling
+let timeout;
+function debouncePopulateDiv() {
+    // delay the call to populateDiv until i have not been called for 100ms
+    // and I've been called atleast once
+
+    // how to cancel a clock?
+    // clearTimeout
+    clearTimeout(timeout);
+
+    timeout = setTimeout(function() {
+        populateDiv()
+    }, 100);
+
+}
+
 function populateDiv() {
     const a = document.getElementById("firstNumber").value;
     const b = document.getElementById("secondNumber").value;
