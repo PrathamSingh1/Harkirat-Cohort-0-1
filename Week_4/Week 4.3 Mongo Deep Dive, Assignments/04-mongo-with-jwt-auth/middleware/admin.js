@@ -8,7 +8,15 @@ function adminMiddleware(req, res, next) {
     const token = req.header.authorization;
     // Bearer aasdfasdf => ["Bearer", "aasdfasdf"];
     const words = token.split(" ");
-    const jwtToken = words[1]
+    const jwtToken = words[1];
+    const decodedValue = jwt.verify(jwtToken, secret);
+    if (decodedValue.username) {
+        next();
+    } else {
+        res.status(403).json({
+            msg: "You are not authenticated"
+        })
+    }
     
 }
 
