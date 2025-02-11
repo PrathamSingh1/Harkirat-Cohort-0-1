@@ -7,7 +7,7 @@ function App() {
 
   return (
     <div>
-
+      <CustomButton count={count} setCount={setCount}></CustomButton>
     </div>
   )
 }
@@ -15,7 +15,7 @@ function App() {
 // component
 function CustomButton(props) {
   function onClickHandler() {
-    props.setCount(count + 1);
+    props.setCount(props.count + 1);
   }
 
   return <button onClick={onClickHandler}>
