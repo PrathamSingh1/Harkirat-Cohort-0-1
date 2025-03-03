@@ -1,15 +1,9 @@
+// backend/db.js
 const mongoose = require('mongoose');
 
 mongoose.connect("mongodb://localhost:27017/Paytm")
-.then(()=>{
-    console.log("mongodb connected");
-})
-.catch(()=>{
-    console.log("failed to connect");
-})
-    
-// Created a Schema for Users
 
+// Create a Schema for Users
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
@@ -41,7 +35,7 @@ const userSchema = new mongoose.Schema({
 
 const accountSchema = new mongoose.Schema({
     userId: {
-        type: mongoose.Schema.Types.ObjectId,   // Reference to User model
+        type: mongoose.Schema.Types.ObjectId, // Reference to User model
         ref: 'User',
         required: true
     },
@@ -51,12 +45,10 @@ const accountSchema = new mongoose.Schema({
     }
 });
 
-// Created a model from the schema
-
-const User = mongoose.model('User', userSchema);
 const Account = mongoose.model('Account', accountSchema);
+const User = mongoose.model('User', userSchema);
 
 module.exports = {
-    User,
-    Account,
+	User,
+    Account
 };
