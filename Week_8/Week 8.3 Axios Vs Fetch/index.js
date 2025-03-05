@@ -1,4 +1,4 @@
-        // axios vs fetch
+        // axios vs fetch for api calls
 
 const axios = require("axios");
 
