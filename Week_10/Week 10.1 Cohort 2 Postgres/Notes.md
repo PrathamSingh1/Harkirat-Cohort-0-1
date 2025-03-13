@@ -99,6 +99,13 @@ Connection String
 postgres://[username]:[password]@[host]/[database_name]
 
 
+postgresql://username:password@host/database
+
+ psql -h localhost -d postgres -U postgres
+ psql -h host -d databaseName -U username
+
+ \dt => to see the List to relations in your database.
+
 
 
 
