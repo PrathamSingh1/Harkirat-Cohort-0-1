@@ -44,3 +44,5 @@ npx prisma migrate dev --name UserAndTodoAdded
 
 
 if does not work then try to format the window , your window have some issue.
+
+Learn 
