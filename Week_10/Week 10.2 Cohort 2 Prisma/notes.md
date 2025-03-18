@@ -31,3 +31,16 @@ Change `outDir` to `dist`
 1. Initialize a fresh prisma project 
 
 npx prisma init
+
+
+
+After creating the schema how to migrate :
+
+npx prisma migrate dev --name Initialize the schema
+
+Example-
+
+npx prisma migrate dev --name UserAndTodoAdded
+
+
+if does not work then try to format the window , your window have some issue.
