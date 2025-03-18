@@ -46,3 +46,5 @@ npx prisma migrate dev --name UserAndTodoAdded
 if does not work then try to format the window , your window have some issue.
 
 Install the Wsl in your window to get more command like mac and give you more hands on practice.
+
+Pratham Singh
