@@ -43,8 +43,6 @@ Example-
 npx prisma migrate dev --name UserAndTodoAdded
 
 
-if does not work then try to format the window , your window have some issue.
+How to generate the client:
 
-Install the Wsl in your window to get more command like mac and give you more hands on practice.
-
-Pratham Singhh
+npx prisma generate
