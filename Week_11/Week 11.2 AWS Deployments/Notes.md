@@ -56,3 +56,57 @@ Installing nginx
 
 sudo apt update 
 sudo apt install nginx
+
+
+
+
+point the ip to your domain after that change the config file of nginx 
+
+sudo vi /etc/nginx/nginx.conf           // to access the file
+
+sudo rm /etc/nginx/nginx.conf           // to remove the file
+
+sudo vi /etc/nginx/nginx.conf           // to reopen the file with nothing inside then paste the given code.
+
+
+
+code -:
+
+events {
+    # Event directives...
+}
+
+http {
+	server {
+    listen 80;
+    server_name be1.100xdevs.com;
+
+    location / {
+        proxy_pass http://localhost:8080;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+	}
+}
+
+
+after that restart this by below command-
+
+sudo nginx -s reload
+
+
+after that run your backend by node then you are good to go.
+
+There comes a question how do i keep running the index.js after i close the machine the answer is Process Manager
+
+
+run these command-
+
+npm i -g pm2
+
+then 
+
+pm2 start index.js              // this should run it forever
