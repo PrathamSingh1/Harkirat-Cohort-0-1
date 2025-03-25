@@ -32,3 +32,54 @@ When should you use a serverless architecture?
 1. When you have to get off the ground fast and don't want to worry about deployments 
 2. When you cant't anticipate the traffic and don't want to worry about autoscaling
 3. If you have very low traffic and want to optimise for costs
+
+
+Initializing a worker 
+
+To create and deploy your application, you can take the following steps-
+
+Initialize a worker:
+
+npm create cloudflare -- my-app
+
+// Select no for Do you want to deploy your application
+
+
+If you are unable to get the server 8787 then :
+
+
+sudo apt update && sudo apt install libatomic1 -y
+
+
+// To login on cloudflare from terminal
+
+npx wrangler login
+
+
+to check
+
+npx wrangler whoami 
+
+
+to run 
+
+npm run dev
+
+
+to deploy it 
+
+
+npm run deploy
+
+
+
+// Express does not work on the cloudflare workers so what we use we use Hono
+
+
+Working with cloudflare workers-
+
+1. initialize a new app
+
+npm create hono@latest my-app
+
+
