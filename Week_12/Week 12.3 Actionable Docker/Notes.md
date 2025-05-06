@@ -49,3 +49,6 @@ The connection string for this postgres would be
 
 
 postgresql://postgres:mysecretpassword@localhost:5432/postgres
+
+
+psql -h localhost -d postgres -U postgres
