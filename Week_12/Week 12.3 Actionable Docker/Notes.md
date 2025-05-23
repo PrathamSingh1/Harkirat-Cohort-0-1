@@ -1,3 +1,7 @@
+docker 
+
+docker run hello-world
+
 Common commands to know-:
 
 1. docker run 
