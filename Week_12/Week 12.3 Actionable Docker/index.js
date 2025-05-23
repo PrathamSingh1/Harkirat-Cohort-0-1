@@ -2,7 +2,7 @@
 const { Client } = require('pg');
 
 // Define your connection string (replace placeholders with your actual data)
-const connectionString = 'postgresql://postgres:mysecretpassword@localhost:5432/postgres';
+const connectionString = 'postgresql://postgres:developer@localhost:5432/postgres';
 
 // Create a new client instance with the connection string
 const client = new Client({
