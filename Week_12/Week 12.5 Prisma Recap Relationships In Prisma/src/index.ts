@@ -29,7 +29,7 @@ async function getTodosAndUserDetails(userId: number) {
       id: true,
       title: true,
       description: true,
-      user: true
+      // user: true
     }
   })
   console.log(response);
