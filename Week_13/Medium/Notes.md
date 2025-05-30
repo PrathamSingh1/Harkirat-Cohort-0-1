@@ -1,0 +1,1 @@
+postgresql://mediumdb_owner:npg_hFuDzs3coYa7@ep-plain-shadow-a8bm1gqk-pooler.eastus2.azure.neon.tech/mediumdb?sslmode=require
