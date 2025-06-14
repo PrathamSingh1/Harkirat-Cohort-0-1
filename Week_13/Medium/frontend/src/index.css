@@ -1,0 +1,36 @@
+@import 'tailwindcss';
+@plugin 'flowbite-react/plugin/tailwindcss';
+@source '../.flowbite-react/class-list.json';
+
+@font-face {
+  font-family: "Chubbo-Regular";
+  src: url("./Chubbo-Regular.otf");
+}
+
+@font-face {
+  font-family: "Chubbo-Bold";
+  src: url("./Chubbo-Bold.otf");
+}
+
+@font-face {
+  font-family: "Pally-Regular";
+  src: url("./Pally-Regular.otf");
+}
+
+@font-face {
+  font-family: "Sentient-Regular";
+  src: url("./Sentient-Regular.otf");
+}
+
+@font-face {
+  font-family: "Supreme-Regular";
+  src: url("./Supreme-Regular.otf");
+}
+
+@font-face {
+  font-family: "Supreme-Bold";
+  src: url("./Supreme-Bold.otf");
+}
+
+
+
