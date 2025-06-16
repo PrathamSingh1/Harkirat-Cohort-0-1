@@ -12,7 +12,7 @@ export const FullBlog = ({ blog }: {blog: Blog}) => {
 
             <div className="flex items-center pt-5 gap-4">
                 <div className="flex items-center">
-                    <Avatar name="Pratham Singh" h="h-[32px]" w="w-[32px]" />
+                    <Avatar name={blog.author.name || "Anonymous"} h="h-[32px]" w="w-[32px]" />
                 </div>
                 <div className="text-[14px] text-[#242424] font-[400] leading-[20px] font-[supreme]">{blog.author.name || "Anonymous"}</div>
             </div>
