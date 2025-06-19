@@ -145,3 +145,48 @@ We want to introduce a route that returns hardcoded values for a user's detatils
 2. Add a folder inside called user
 3. Add a file inside called route.ts
 4. Initialize a GET route inside it
+
+
+
+
+How to assess the query prams and all
+
+export async function POST(req: NextRequest) {
+    // body
+    const body = await req.json();
+    console.log(body);
+    // header
+    console.log(req.headers.get("authorization"));
+    // query parameters
+    console.log(req.nextUrl.searchParams.get("name"));
+
+    // hit the database with username, password
+    return NextResponse.json({
+        message: "You are signed up"
+    })
+}
+
+
+
+
+
+
+Server Action
+
+"use server" 
+
+import client from "@/db";
+
+async function signup(email: string, password: string) {
+    try {
+        await client.user.create({
+            data: {
+                email: email,
+                password: password
+            }
+        });
+        return "signup!"
+    } catch(e) {
+        return "error"
+    }
+}
