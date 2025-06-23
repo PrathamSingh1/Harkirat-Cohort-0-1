@@ -143,7 +143,11 @@ Lets you push your image to a registry
 
 docker kill
 
-docker exec
+docker exec   -> to execute a command inside a container
+
+docker exec container_id ls         -> not running iteractive only give you list of file present in that container
+
+docker exec -it container_id /bin/bash            -> -it means interactive mode
 
 docker rmi mongo  -> to remove the images 
 
@@ -170,3 +174,77 @@ A dockerfile has 2 parts
 
 2. Bunch of commands that you run on the base image (to install dependencies like Node.js)
 
+
+
+
+
+
+//    Dockerfile
+
+FROM node:16-alpine                 Base Image
+
+WORKDIR /app                        Working directory
+
+COPY . .                            Copy Everything to Workdir
+
+RUN npm install                     Run command to build the code...
+RUN npm run build
+RUN npx prisma generate
+
+EXPOSE 3000                         Expose ports 
+
+CMD ["node", "dist/index.js"]       Final command that runs when running the container
+
+
+
+// Create a top level .dockerignore file so that COPY . . command do not copy your node_module which eventully get install on RUN npm install
+
+.dockerignore
+
+node_modules
+dist
+
+
+
+
+
+//Common commands
+
+WORKDIR: Sets the working directory for any RUN, CMD, ENTRYPOINT, COPYinstructions that follow it.
+
+RUN: Executes any commands in a new layer on top of the current image and commits the results.
+
+CMD: Provides defaults for executing a container. There can only be one CMD instruction in a Dockerfile.
+
+EXPOSE: Informs Docker that the container listens on the specified network ports at runtime.
+
+ENV: Sets the environment variable.
+
+COPY: Allow files from the Docker host to be added to the Docker image
+
+
+
+
+// Now how to run the Dockerfile 
+
+Make sure you are in the same folder where Dockerfile is present
+
+docker build -t backend-app .         -> -t is for the tag name you're giving and . tells where to build the image
+
+
+above command will create your own image in your machine
+
+after that run the image
+
+docker run -p 3000:3000 backend-app
+
+
+
+
+
+Passing in env variables ->
+
+docker run -p 3000:3000 -e DATABASE_URL="connection string of yours" image_name
+
+
+The -e argument let’s you send in environment variables to your node.js app
