@@ -141,7 +141,9 @@ Lets you push your image to a registry
 
 6. Extra commands
 
-docker kill
+docker kill <container_id>          -> to kill the container
+
+docker logs <container_id>      -> to check the logs
 
 docker exec   -> to execute a command inside a container
 
