@@ -118,3 +118,9 @@ Helper packages
 1. packages/ui - UI packages 
 2. packages/typescript-config - Shareable TS configuration
 3. packages/eslint-config - Shareable ESLine configuration 
+
+
+
+When you are using TS in backend and want to compile the code in monorepo use ->
+
+tsup    or esbuild
