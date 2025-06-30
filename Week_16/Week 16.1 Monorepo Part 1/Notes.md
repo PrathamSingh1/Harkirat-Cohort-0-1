@@ -100,3 +100,21 @@ Initialize a Turborepo ->
 npx create-turbo@latest
 
 Select npm workspaces as the monorepo framework
+
+
+
+
+Explore the folder structure   ->
+
+There are 5 modules in our project
+
+End user apps (websites/core backend)
+
+1. apps/web - A Next.js website
+2. apps/docs - A Docs website that has all the documentation related to your project
+
+Helper packages
+
+1. packages/ui - UI packages 
+2. packages/typescript-config - Shareable TS configuration
+3. packages/eslint-config - Shareable ESLine configuration 
