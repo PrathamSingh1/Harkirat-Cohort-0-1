@@ -19,7 +19,14 @@ const handler = NextAuth({
             },                 
         })
     ],
-    secret: process.env.NEXTAUTH_SECRET
+    secret: process.env.NEXTAUTH_SECRET,
+    callbacks: {
+        jwt: ({token, user}) => {
+            console.log(token);
+            token.userId = token.sub;
+            return token;
+        }
+    }
 });
 
 export const GET = handler;
