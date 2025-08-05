@@ -106,3 +106,85 @@ Push this to master branch
 Create a new branch with some minimal changes and create a PR from it
 
 You should see the workflow run
+
+
+
+
+Let's add a deploy step ->
+
+
+Create dockerfiles for the apps you have 
+
+Create docker/Dokerfile.user
+
+
+FROM node:20.12.0-alpine3.19
+
+WORKDIR /usr/src/app
+
+COPY package.json package-lock.json turbo.json tsconfig.json ./
+
+COPY apps ./apps
+COPY packages ./packages
+
+# Install dependencies
+RUN npm install
+# Can you add a script to the global package.json that does this?
+RUN cd packages/db && npx prisma generate && cd ../..
+
+# Can you filter the build down to just one app?
+RUN npm run build
+
+CMD ["npm", "run", "start-user-app"]
+
+
+Add start-user-app script to the root package.json->
+
+"start-user-app": "cd ./apps/user-app && npm run start"
+
+
+
+Create the CD pipeline that
+
+1. Clones the repo
+2. Builds the docker image
+3. Pushes the docker image
+
+
+
+name: Build and Deploy to Docker Hub
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check Out Repo
+      uses: actions/checkout@v2
+
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Build and Push Docker image
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        file: ./Dockerfile
+        push: true
+        tags: 100xdevs/web-app:latest  # Replace with your Docker Hub username and repository
+
+    - name: Verify Pushed Image
+      run: docker pull 100xdevs/web-app:latest  # Replace with your Docker Hub username and repository
+
+
+
+Make sure to add the dockerhub secrets to github secrets of the repo (DOCKER_USERNAME, DOCKER_PASSWORD)
+
+You should see a workflow running
