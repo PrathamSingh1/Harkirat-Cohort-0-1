@@ -13,3 +13,4 @@
 13. git branch -D <name of the branch you want to delete>       // delete the local branch on your machine which is not merged yet
 14. git branch -d <name of the branch you want to delete>      // delete the local branch on your machine if fully merged
 15. git branch          // to check the branch
+16. git pull origin main --rebase           // if your main branch is ahead of your local branch
