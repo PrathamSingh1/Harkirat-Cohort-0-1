@@ -1,7 +1,7 @@
 1. git clone <https copied repo link>
 2. git diff     // it tells what changes you have made in your files etc
 3. git log      // shows the all commit details
-4. git add .
+4. git add .    // make all the files in staged area
 5. git commit -m ""
 6. git remote add origin <ssh of the new repo where you want to store your repo>
 7. git push origin HEAD
@@ -14,3 +14,4 @@
 14. git branch -d <name of the branch you want to delete>      // delete the local branch on your machine if fully merged
 15. git branch          // to check the branch
 16. git pull origin main --rebase           // if your main branch is ahead of your local branch
+17. git reset       // remove everything form the staged area without loosing your code.
