@@ -15,3 +15,4 @@
 15. git branch          // to check the branch
 16. git pull origin main --rebase           // if your main branch is ahead of your local branch
 17. git reset       // remove everything form the staged area without loosing your code.
+18. git commit --amend          // add my changes to old commit
