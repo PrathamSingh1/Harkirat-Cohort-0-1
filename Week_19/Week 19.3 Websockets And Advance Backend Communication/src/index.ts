@@ -8,6 +8,7 @@ const server = http.createServer(function(request: any, response: any) {
 
 const wss = new WebSocketServer({ server });
 
+let userCount = 0;
 wss.on('connection', function connection(ws) {
     ws.on('error', console.error);
 
@@ -19,9 +20,10 @@ wss.on('connection', function connection(ws) {
         });
     });
 
+    console.log("User Connected " , ++userCount);
     ws.send('Hello! Message From Server!!');
 });
 
 server.listen(8080, function() {
     console.log((new Date()) + ' Server is listening on port 8080 ');
-});
+});  
