@@ -147,3 +147,19 @@ wss.on('connection', function connection(ws) {
 
     ws.send('Hello! Message From Server!!');
 });
+
+
+
+
+
+Scaling ws servers ->
+
+Gather town - It uses the sticky approach one room can have 200 users who ever is conneceted to that room India, US, UK put it on the same server.( not good approach but works fine).
+
+In the real world, you'd want more than one websocket servers (Especially as your website gets more traffic) 
+
+The way to scale websocket servers usually happens by creating a ws fleet
+
+There is usually a central layer behind it that orchestrates messages
+
+ws servers are kept stateless
