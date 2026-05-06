@@ -1,30 +1,13 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import { useMousePointer } from "./hooks/useMousePointer";
 
 function App() {
-
-  return (
-    <>
-      <MyComponent />
-    </>
-  )
-}
-
-function MyComponent() {
-  const [count, setCount] = useState(0);
-
-  const incrementCount = () => {
-    setCount(count + 1);
-  };
-
+  const mousePointer = useMousePointer();
   return (
     <div>
-      <p>{count}</p>
-      <button onClick={incrementCount}>Increment</button>
+      Your mouse position is {mousePointer.x} {mousePointer.y}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

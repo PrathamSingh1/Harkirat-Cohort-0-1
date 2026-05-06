@@ -214,3 +214,41 @@ app.put("/user", (req, res) => {
 });
 
 app.listen(3000);
+
+
+
+Code wit Typescript-:
+
+
+import { z } from 'zod';
+import express from "express";
+
+const app = express();
+
+// Define the schema for profile update
+const userProfileSchema = z.object({
+  name: z.string().min(1, { message: "Name cannot be empty" }),
+  email: z.string().email({ message: "Invalid email format" }),
+  age: z.number().min(18, { message: "You must be at least 18 years old" }).optional(),
+});
+
+type userProfileSchemaType = z.infer<typeof userProfileSchema>;
+
+app.put("/user", (req, res) => {
+  const { success } = userProfileSchema.safeParse(req.body);
+  const updateBody: userProfileSchemaType = req.body; // how to assign a type to updateBody?
+
+  if (!success) {
+    res.status(411).json({});
+    return
+  }
+  // update database here
+  res.json({
+    message: "User updated"
+  })
+});
+
+app.listen(3000);
+
+
+This become more useful when we have to share the Type of the object or something we have defined in the backend and we need that in the frontend so we can use the zod to define that type in the backend and use the type infer to make it a type and export it from here and use it in the frontend.

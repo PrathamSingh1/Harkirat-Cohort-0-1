@@ -31,12 +31,19 @@ Generics are a language indempendent concept (exist in C++ as well)
 
 Generics enable you to create components that work with any data type while still providing compile-time type safety.
 
-function firstEl<T>(arr: T[]) {
+function firstEl<T>(arr: T[]): T {
     return arr[0];
 }
 
-const value = firstEl<string>(["pratham", "singh"]);
+const el = firstEl(["pratham", "singh"]);
+const el2 = firstEl([1, 2]);
+const el3 = firstEl([true, false])
 console.log(value.toUpperCase());
+
+
+It can infer the type based on the given value but if you try to give two different value like an array can have both string and number then it a problem and to fix that you can explicity provide the type like-
+
+const el = firstEl<string>(["pratham", "singh"]);
 
 
 
