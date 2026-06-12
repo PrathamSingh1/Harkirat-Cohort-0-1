@@ -25,3 +25,45 @@ save 300 10 # Save the dataset every 300 seconds if at least 10 keys changed
 save 60 10000 # Save the dataset every 60 seconds if at least 10000 keys changed
 
 AOF (Append Only File): The AOF persistence logs every write operation received by the server, appending each operation to a file. This file can then be replayed on startup to reconstruct the dataset.
+
+Steps to run the redis in docker -
+
+docker run --name my-redis -d -p 6379:6379 redis
+
+How to access the redis-cli -
+
+docker exec -it <container_id> /bin/bash
+
+redis-cli
+
+Commands in redis -
+
+SET key "value" ex: SET user "Pratham"
+GET key ex: GET user
+DEL key ex: DEL user
+
+If you want to set multiple key value -
+
+HGET user:100 name "John Doe" email "user@example.com" age "30"
+HGET user:100 name
+HGET user:100 email
+
+Redis as a queue -
+
+You can also push to a topic/queue on Redis and other processes can pop from it.
+Good example of this is Leetcode submissions that need to be processed asynchronously
+
+Pushing to a queue -
+
+LPUSH problem 1 // pushing from the left side
+LPUSH problem 2
+
+Popping from a queue -
+
+RPOP problems 1 // when pushing from the left side make sure you pop from the right side
+RPOP problems 2
+
+Blocked pop
+
+BRPOP problems 0 // means wait infinit time till someone push in it
+BRPOP problems 30 // wait for thirty second if nothing came exit it
