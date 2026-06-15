@@ -7,3 +7,19 @@
 3. Managing Traffic: In high-traffic scenarios, like ticket sales for a popular event, rate limiting can help manage the load on a server, preventing crashes and ensuring a fairer distribution of service like bandwidth or access to the purchasing system.
 
 4. DDoS Protection: A DDoS attack involves overwhelming a site with a flood of traffic from multiple sources, which can make the website unavailable. DDoS protection mechanisms detect unusual traffic flows and can filter out malicious traffic, helping to keep the service operational despite the attack.
+
+## DDoS
+
+Your server is still vulnerable to DDoS
+
+Though DDoS is rarely used for passowrd reset, it is usually used to choke a server.
+
+Why do attakers to DDoS -
+
+1. To charge ransom because the service remains down until DDoS is lifted.
+2. On sneaker drop events/NFT mints where the faster the request reaches the server the better.
+
+How can you save your reset passowrd endpoints?
+
+1. You can implement logic that only 3 resets are allowed per email sent out.
+2. You can implement captcha logic
