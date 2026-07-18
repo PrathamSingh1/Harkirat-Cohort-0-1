@@ -77,3 +77,57 @@ Summary -
 
 You need a signaling server, stun server to initiate the webrtc conn b/w the parties. You can kill these once the conn is made.
 You need to include a turn server incase any of the users are on a restrictive network so you can get back a turn ice candidate as well.
+
+Connecting the two sides -
+
+The steps to create a webrtc connection between 2 sides includes -
+
+1. Browser 1 creates and RTCPeerConnection
+2. Browser 1 creates an offer
+3. Browser 1 sets the local description to the offer
+4. Browser 1 sends the offer to the other side through the signaling server
+5. Browser 2 receives the offer from the signaling server
+6. Browser 2 sets the remote description to the offer
+7. Browser 2 creates an answer
+8. Browser 2 sets the local description to be the answer
+9. Browser 2 sends the answer to the other side through the signaling server
+10. Browser 1 receives the answer and sets the remote description
+
+This is just to establish the p2p connection b/w the two parites
+
+To actually send media, we have to
+
+1. Ask for camera / mic permission
+2. Get the audio and video streams
+3. Call addTrack on the pc
+4. This would trigger a onTrack callback on the other side
+
+Other architectures -
+
+There are two other popular architectures for doing WebRTC
+
+1. SFU (Selective Forwarding Unit)
+2. MCU (Multipoint Control Unit)
+
+Problems with p2p
+
+Doesn't scale well beyond 3-4 people in the same call
+
+SFU -
+
+SFU stands for Selective forwarding unit. This acts as a central media server which forwards packets b/w users
+
+Popular Open source SFUs -
+
+1. https://github.com/versatica/mediasoup
+2. https://github.com/pion/webrtc (not exactly an SFU but you can build one on top of it)
+
+MCU -
+
+It mixes audio/video together on the server before forwarding it.
+
+This means it needs to
+
+1. decode video/audio (using something like ffmpeg)
+2. Mix them (create a video canvas/create a single audio stream)
+3. Send out the merged audio stream to everyone
