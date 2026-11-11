@@ -1,18 +1,23 @@
 1. git clone <https copied repo link>
-2. git diff     // it tells what changes you have made in your files etc
-3. git log      // shows the all commit details
-4. git add .    // make all the files in staged area
+2. git diff // it tells what changes you have made in your files etc
+3. git log // shows the all commit details
+4. git add . // make all the files in staged area
 5. git commit -m ""
 6. git remote add origin <ssh of the new repo where you want to store your repo>
 7. git push origin HEAD
-8. git remote -v    // to check the fetch link and where it going to be store on pushing.
-9. git status    // to check the changes
+8. git remote -v // to check the fetch link and where it going to be store on pushing.
+9. git status // to check the changes
 10. git checkout -b <new branch name you want to create>
-11. git push origin --delete <branch name you want to delete>       //  Delete the remote branch on github
-12. git checkout main       // to change the branch 
-13. git branch -D <name of the branch you want to delete>       // delete the local branch on your machine which is not merged yet
-14. git branch -d <name of the branch you want to delete>      // delete the local branch on your machine if fully merged
-15. git branch          // to check the branch
-16. git pull origin main --rebase           // if your main branch is ahead of your local branch
-17. git reset       // remove everything form the staged area without loosing your code.
-18. git commit --amend          // add my changes to old commit
+11. git push origin --delete <branch name you want to delete> // Delete the remote branch on github
+12. git checkout main // to change the branch
+13. git branch -D <name of the branch you want to delete> // delete the local branch on your machine which is not merged yet
+14. git branch -d <name of the branch you want to delete> // delete the local branch on your machine if fully merged
+15. git branch // to check the branch
+16. git pull origin main --rebase // if your main branch is ahead of your local branch
+17. git reset // remove everything form the staged area without loosing your code.
+18. git commit --amend // add my changes to old commit
+19. git log --oneline // find the history hash of the commit you want
+20. git checkout <hash> // view the old code (you're now in "detached HEAD")
+21. git checkout main // go back to your normal branch
+22. git branch broken-backup // saves the current state under a new name
+23. git reset --hard <hash> // moves your branch back to the old commit
