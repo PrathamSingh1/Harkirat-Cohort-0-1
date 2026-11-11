@@ -20,9 +20,7 @@ You can, and you should if your
 
 1. Services are highly decoupled (dont share any code)
 2. Services don’t depend on each other.
-For eg - A codebase which has a Golang service and a JS service
-
-
+   For eg - A codebase which has a Golang service and a JS service
 
 Why monorepos?
 
@@ -32,19 +30,16 @@ Enhanced Collaboration
 
 Optimized Builds and CI/CD: Tools like TurboRepo offer smart caching and task execution strategies that can significantly reduce build and testing times.
 
-Centralized Tooling and Configuration: Managing build tools, linters, formatters, and other configurations is simpler in a monorepo because you can have a single set of tools for the entire project. 
-
-
+Centralized Tooling and Configuration: Managing build tools, linters, formatters, and other configurations is simpler in a monorepo because you can have a single set of tools for the entire project.
 
 Common monorepo framework in Node.js ->
 
 1. Lerna - https://lerna.js.org/
 2. nx - https://github.com/nrwl/nx
-3. Turborepo - https://turbo.build/     - Not exactly a monorepo framework
-4. Yarn/npm workspaces  - https://classic.yarnpkg.com/lang/en/docs/workspaces/
+3. Turborepo - https://turbo.build/ - Not exactly a monorepo framework
+4. Yarn/npm workspaces - https://classic.yarnpkg.com/lang/en/docs/workspaces/
 
 We'll be going through turborepo since it's the most relevant one today and provides more things (like build optimisations) that others don't
-
 
 History of Turborepo ->
 
@@ -53,33 +48,24 @@ History of Turborepo ->
 3. Mild speculation/came from a random source- Pretty hefty dealp
 4. They've built a bunch of products, Turborepo is the most used one
 
-
 Build system vs Build system orchestrator vs Monorepo framework ->
-
 
 Build System ->
 
 A build system automates the process of transforming source code written by developers into binary code that can be executed by a computer. For JavaScript and TypeScript projects, this process can include transpilation (converting TS to JS), bundling (combining multiple files into fewer files), minification (reducing file size), and more. A build system might also handle running tests, linting, and depolying applications.
 
-
 Build System Orchestrator ->
 
-TurboRepo acts more like a build system orchestrator rather than a direct build system itself. It doesn't directly perform tasks like transpilation, bundling, minification, or running tests. Instead, TurboRepo allows you to define tasks in your monorepo that call other tools (which are the actual build systems) to perform these actions. 
+TurboRepo acts more like a build system orchestrator rather than a direct build system itself. It doesn't directly perform tasks like transpilation, bundling, minification, or running tests. Instead, TurboRepo allows you to define tasks in your monorepo that call other tools (which are the actual build systems) to perform these actions.
 These tools can include anything from tsc, vite etc
 
-
-Monorepo Framework  ->
+Monorepo Framework ->
 
 A monorepo framework provides tools and conventions for managing projects that contain multiple packages or applications within a single repository (monorepo). This includes dependency management between packages, workspace configuration.
 
+Turborepo as a build system orchestrator ->
 
-
-
-
-
-Turborepo as a build system orchestrator   ->
-
-Turborepo is a build system orchestrator . 
+Turborepo is a build system orchestrator .
 
 The key feature of TurboRepo is its ability to manage and optimize the execution of these tasks across your monorepo. It does this through:
 
@@ -88,8 +74,6 @@ The key feature of TurboRepo is its ability to manage and optimize the execution
 2. Parallelization: It can run independent tasks in parallel, making efficient use of your machine's resources. This reduces the overall time needed to complete all tasks in your project.
 
 3. Dependency Graph Awareness: TurboRepo understands the dependency graph of your monorepo. This means it knows which packages depend on each other and can ensure tasks are run in the correct order.
-
-
 
 Let’s initialize a simple Turborepo ->
 
@@ -101,10 +85,7 @@ npx create-turbo@latest
 
 Select npm workspaces as the monorepo framework
 
-
-
-
-Explore the folder structure   ->
+Explore the folder structure ->
 
 There are 5 modules in our project
 
@@ -115,12 +96,76 @@ End user apps (websites/core backend)
 
 Helper packages
 
-1. packages/ui - UI packages 
+1. packages/ui - UI packages
 2. packages/typescript-config - Shareable TS configuration
-3. packages/eslint-config - Shareable ESLine configuration 
-
-
+3. packages/eslint-config - Shareable ESLine configuration
 
 When you are using TS in backend and want to compile the code in monorepo use ->
 
-tsup    or esbuild
+tsup or esbuild
+
+How to use shared packages ->
+
+Create a folder in packages/shared_folder
+
+npm init -y
+
+create a tsconfig.json in that
+
+extend the tsconfig to the base config
+
+create a src folder inside that
+
+and create index.ts write your code
+
+and you have to export that function and the way you use devDependencies here you have to use in the that folder where you want to use this shared package.
+
+```
+{
+  "name": "@repo/utils",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "exports": {
+    "./date": "./src/index.ts"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*"
+  },
+  "author": "",
+  "license": "ISC"
+}
+```
+
+you can export types like this
+
+```
+{
+  "name": "@repo/utils",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": {
+        "import": "./src/index.ts",
+        "require": "./src/index.ts",
+        "default": "./src/index.ts"
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*"
+  },
+  "author": "",
+  "license": "ISC"
+}
+
+```
